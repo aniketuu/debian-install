@@ -55,3 +55,13 @@ read -p "install qemu/kvm? [y/N] " VM
 if [[ $VM = "y" ]]; then
   nala install libvirt-daemon-system libvirt-clients qemu-system-x86 qemu-utils virt-manager ovmf bridge-utils
 fi
+
+# windscribe
+read -p "install windscribe? [y/N] " WINSCRB
+if [[ $WINSCRB = "y" ]]; then
+  cd /tmp
+  wget https://assets.staticnetcontent.com/desktop/linux/windscribe-cli_1.4-51_amd64.deb
+  nala install resolvconf openvpn
+  dpkg -i windscribe-cli_1.4-51_amd64.deb
+  echo "please reboot your system"
+fi
