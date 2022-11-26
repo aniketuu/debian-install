@@ -21,7 +21,7 @@ apt full-upgrade
 apt install nala -y
 
 # install apps
-nala install htop neofetch bash-completion mpv feh zathura blueman vim kitty xterm
+nala install htop neofetch bash-completion mpv feh zathura blueman vim kitty xterm mesa-utils
 
 # 32 bit stuff
 read -p "want 32-bit packages? [y/N] " BIT32
@@ -35,6 +35,7 @@ fi
 read -p "using nvidia? [y/N] " NVI
 if [ $NVI == "y" ]; then
   nala install nvidia-driver firmware-misc-nonfree
+  echo 'alias prime-run="__NV_PRIME_RENDER_OFFLOAD=1 __GLX_VENDOR_LIBRARY_NAME=nvidia"' >> /home/$SUDO_USER/.bashrc
   if [ $BIT32 == "y" ]; then
     nala install nvidia-driver-libs:i386
   fi
