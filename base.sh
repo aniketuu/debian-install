@@ -49,3 +49,8 @@ if [ $STEAM == "y" ]; then
   nala install steam mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
 fi
   
+# install qemu/kvm
+read -p "install qemu/kvm? [y/N] " VM
+if [[ $VM = "y" ]]; then
+  nala install libvirt-daemon-system libvirt-clients qemu-system-x86 qemu-utils virt-manager ovmf bridge-utils
+fi
