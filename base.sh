@@ -54,6 +54,7 @@ fi
 read -p "install qemu/kvm? [y/N] " VM
 if [[ $VM = "y" ]]; then
   nala install libvirt-daemon-system libvirt-clients qemu-system-x86 qemu-utils virt-manager ovmf bridge-utils
+  mkdir /var/lib/libvirt/isos
 fi
 
 # windscribe
