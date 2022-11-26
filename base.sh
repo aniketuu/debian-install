@@ -3,10 +3,13 @@
 printf "\033c" #reset the terminal
 echo "Debian base install script"
 
-if [[ $EUID -ne 0 ]]; then
+if [ $EUID -ne 0 ]; then
  echo "Please run as super user"
  exit 1
 fi
+
+# lightdm conf
+sed -i "s/^#greeter-hide-users=false$/greeter-hide-users=false/" /etc/lightdm/lightdm.conf
 
 # update to testing
 echo "deb http://deb.debian.org/debian/ testing main non-free contrib" > /etc/apt/sources.list
@@ -16,3 +19,33 @@ apt full-upgrade
 
 # Install nala
 apt install nala -y
+
+# install apps
+nala install htop neofetch bash-completion mpv feh zathura blueman vim kitty xterm
+
+# 32 bit stuff
+read -p "want 32-bit packages? [y/N] " BIT32
+if [ $BIT32 == "y" ]; then
+  dpkg --add-architecture i386
+  nala update
+  nala upgrade
+fi
+
+# nvidia
+read -p "using nvidia? [y/N] " NVI
+if [ $NVI == "y" ]; then
+  nala install nvidia-driver firmware-misc-nonfree
+  if [ $BIT32 == "y" ]; then
+    nala install nvidia-driver-libs:i386
+  fi
+fi
+
+# steam
+read -p "want steam? [y/N] " STEAM
+if [ $STEAM == "y" ]; then
+  if [ $BIT32 != "y" ]; then
+    echo "Enable 32 BIT first"
+  fi
+  nala install steam mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+fi
+  
