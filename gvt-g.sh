@@ -28,4 +28,4 @@ echo "ExecStart=/usr/bin/bash -c 'echo 1e0d01e0-fe65-438a-9120-2066570851f4 > /s
 echo "" >> /etc/systemd/system/setup-gvt.service
 echo "[Install]" >> /etc/systemd/system/setup-gvt.service
 echo "WantedBy=multi-user.target" >> /etc/systemd/system/setup-gvt.service
-#systemctl enable setup-gvt --now
+systemctl enable setup-gvt --now
