@@ -3,18 +3,7 @@
 sudo mkdir -p ~/.local/share/fonts
 
 cd /tmp
-fonts=( 
-"FiraCode" 
-"Go-Mono" 
-"Hack" 
-"Inconsolata" 
-"Iosevka" 
-"JetBrainsMono" 
-"Mononoki" 
-"RobotoMono" 
-"SourceCodePro" 
-"UbuntuMono"
-)
+fonts=("FiraCode" "Go-Mono" "Hack" "Inconsolata" "Iosevka" "JetBrainsMono" "Mononoki" "RobotoMono" "SourceCodePro" "UbuntuMono")
 
 for font in ${fonts[@]}
 do
