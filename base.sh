@@ -47,7 +47,9 @@ if [ $STEAM == "y" ]; then
   if [ $BIT32 != "y" ]; then
     echo "Enable 32 BIT first"
   fi
-  nala install steam mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+  #nala install steam mesa-vulkan-drivers libglx-mesa0:i386 mesa-vulkan-drivers:i386 libgl1-mesa-dri:i386
+  # mesa vulkan drivers messup games like yakuza0
+  nala install steam libglx-mesa0:i386 libgl1-mesa-dri:i386
 fi
   
 # install qemu/kvm
