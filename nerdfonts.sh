@@ -1,6 +1,11 @@
-
 #!/bin/bash
-sudo mkdir -p ~/.local/share/fonts
+
+if [ $EUID -ne 0 ]; then
+ echo "Please run as super user"
+ exit 1
+fi
+
+mkdir -p ~/.local/share/fonts
 
 cd /tmp
 fonts=("FiraCode" "Go-Mono" "Hack" "Inconsolata" "Iosevka" "JetBrainsMono" "Mononoki" "RobotoMono" "SourceCodePro" "UbuntuMono")
