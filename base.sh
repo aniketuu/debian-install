@@ -21,7 +21,7 @@ apt full-upgrade
 apt install nala -y
 
 # install apps
-nala install htop neofetch bash-completion mpv feh zathura blueman vim kitty xterm mesa-utils git
+nala install htop neofetch bash-completion mpv feh zathura blueman vim kitty xterm mesa-utils git python3-usb
 
 # 32 bit stuff
 read -p "want 32-bit packages? [y/N] " BIT32
